@@ -19,29 +19,29 @@ export default function Home(props: any) {
 
   const getStoryById = async (id: number) => {
     const story = await StoriesRepositories.getStoryById(id);
-    Alert.alert(story[0].Description);
+    Alert.alert(story.Description);
   }
 
   return (
     <View style={styles.container}>
-      <View style={ styles.title }>
+      <View style={styles.title}>
         <Text style={styles.title__projeto}>PROJETO</Text>
         <Text style={styles.title__relatos}>RELATOS DE </Text>
         <Text style={styles.title__memorias}>MEMÓRIAS</Text>
       </View>
       {
         stories.map(function (Story: IStory) {
-          
-          return (<View  key={Story.id}>
-       
-            <TouchableOpacity 
-              style={ styles.button } 
-              onPress={() => navigator.navigation.push("Details", Story.id)} 
+
+          return (<View key={Story.id}>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigator.navigation.push("Details", Story)}
             >
-               <Image source={{uri: Story.URLImage }}
+              <Image source={{ uri: Story.URLImage }}
                 style={styles.button__image} />
-              <Text style={ styles.button__text }>
-                {Story.Author} 
+              <Text style={styles.button__text}>
+                {Story.Author}
               </Text>
             </TouchableOpacity>
           </View>
@@ -91,16 +91,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#B49FD5',
     borderRadius: 15
   },
-  button__image:{
-    width: 65, 
+  button__image: {
+    width: 65,
     height: 65,
     borderRadius: 15,
     marginRight: 10
   },
-  button__text: { 
-    fontWeight: '700', 
-    textAlign: 'center', 
-    color: '#eee', 
+  button__text: {
+    fontWeight: '700',
+    textAlign: 'center',
+    color: '#eee',
     fontSize: 16
   }
 });
