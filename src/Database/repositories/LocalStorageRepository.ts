@@ -9,7 +9,7 @@ export class LocalStorageRepository {
   static OpenStoryById = async (StoryId: number): Promise<IStorageStory> => {
     try {
       const StoryPage = await AsyncStorage.getItem('@IStorageStory');
-      if(!StoryPage) {
+      if (!StoryPage) {
         const StorageStory: IStorageStory[] = [{
           LastPageId: 1,
           StoryId
@@ -20,13 +20,26 @@ export class LocalStorageRepository {
           LastPageId: 1,
           StoryId
         };
-      } 
+      }
 
       const storyPage: IStorageStory[] = JSON.parse(StoryPage);
 
-      return storyPage.filter((storageStory: IStorageStory) => {
+      const page = storyPage.filter((storageStory: IStorageStory) => {
         return storageStory.StoryId === StoryId
       })[0]
+
+      if (!page) {
+        this.ChangePageStoryId({
+          LastPageId: 1,
+          StoryId
+        });
+        return {
+          LastPageId: 1,
+          StoryId
+        };
+      }
+
+      return page;
 
     } catch (e) {
       // AppError(e) ->
@@ -40,16 +53,16 @@ export class LocalStorageRepository {
   static ChangePageStoryId = async ({ LastPageId, StoryId }: IStorageStory): Promise<Boolean> => {
     try {
       const StoryPage = await AsyncStorage.getItem('@IStorageStory');
-      
-      if(!StoryPage) {
-       this.OpenStoryById(StoryId);
-       return false;
-      } 
+
+      if (!StoryPage) {
+        this.OpenStoryById(StoryId);
+        return false;
+      }
 
       const storyPage: IStorageStory[] = JSON.parse(StoryPage);
 
       storyPage.forEach(async (storageStory: IStorageStory, index: number) => {
-        if(storageStory.StoryId === StoryId) {
+        if (storageStory.StoryId === StoryId) {
           storyPage[index] = {
             StoryId,
             LastPageId

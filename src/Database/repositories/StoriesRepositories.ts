@@ -1,7 +1,7 @@
-import Stories  from '../db/sqlite.json';
+import Stories from '../db/sqlite.json';
 import { LocalStorageRepository } from './LocalStorageRepository'
 
-interface IStoryPage {
+export interface IStoryPage {
   PageId: number;
   Text: string;
 }
@@ -25,12 +25,12 @@ export class StoriesRepositories {
   static getStoryById = (id: number) => {
     return stories.filter((story: IStory) => {
       return story.id === id;
-    });
+    })[0];
   }
 
   static UpdateStoryLastPageByStoryId = (StoryId: number, PageId: number) => {
     const Story = stories.filter((story: IStory, index: number) => {
-      if(story.id === StoryId) {
+      if (story.id === StoryId) {
         return index;
       }
     });
