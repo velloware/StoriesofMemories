@@ -10,7 +10,7 @@ export interface IStory {
   id: number;
   Author: string;
   Title: string;
-  Image: string;
+  URLImage: string;
   Description: string;
   Pages: IStoryPage[];
 }
