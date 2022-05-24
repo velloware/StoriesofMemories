@@ -6,22 +6,21 @@ import { LocalStorageRepository } from '../../Database/repositories/LocalStorage
 import { INavigator } from '../interfaces/Navigator';
 
 export default function Pages(props: any) {
-  const { Description, URLImage, Author, Page, id } = props.route.params;
+  const { Description, URLImage, Author, Page, id, LastPageId } = props.route.params;
 
   const navigator: INavigator = props;
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(LastPageId);
   const [text, setText] = useState('');
 
   useEffect(() => {
-    (async () => {
-      const { LastPageId } = await LocalStorageRepository.OpenStoryById(id);
+    (async () => {  
       setPage(LastPageId);
 
       const story = await StoriesRepositories.getStoryById(id);
+
       story.Pages.forEach((Page: IStoryPage) => {
+        
         if (Page.PageId === page) {
-          console.log(Page);
-          console.log("page: " + page);
           setText(Page.Text);
         }
       });
@@ -33,9 +32,9 @@ export default function Pages(props: any) {
 
     const story = await StoriesRepositories.getStoryById(id);
     story.Pages.forEach((Page: IStoryPage) => {
+      
       if (Page.PageId === page) {
         setText(Page.Text);
-        console.log(Page);
       }
     });
 
