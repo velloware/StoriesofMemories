@@ -53,6 +53,8 @@ export class LocalStorageRepository {
   static ChangePageStoryId = async ({ LastPageId, StoryId }: IStorageStory): Promise<Boolean> => {
     try {
       const StoryPage = await AsyncStorage.getItem('@IStorageStory');
+      
+      console.log("StoryPage -> ", StoryPage); 
 
       if (!StoryPage) {
         this.OpenStoryById(StoryId);
@@ -60,6 +62,7 @@ export class LocalStorageRepository {
       }
 
       const storyPage: IStorageStory[] = JSON.parse(StoryPage);
+      let EXISTS_IN_LOCALSOTORAGE = true;
 
       storyPage.forEach(async (storageStory: IStorageStory, index: number) => {
         if (storageStory.StoryId === StoryId) {
@@ -67,10 +70,15 @@ export class LocalStorageRepository {
             StoryId,
             LastPageId
           }
-
+          EXISTS_IN_LOCALSOTORAGE = false;
           await AsyncStorage.setItem('@IStorageStory', JSON.stringify(storyPage))
         }
-      })
+      });
+
+      if (EXISTS_IN_LOCALSOTORAGE) {
+        storyPage.push({StoryId, LastPageId});
+        await AsyncStorage.setItem('@IStorageStory', JSON.stringify(storyPage));
+      }
 
       return true;
 

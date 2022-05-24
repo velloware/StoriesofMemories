@@ -8,7 +8,14 @@ export default function Details(props: any) {
 
   const { Description, URLImage, Author, Page, id } = props.route.params;
   const navigator: INavigator = props;
+  let LastPageId = 1;
 
+  async function lastPageId() {
+    const LastPage  = await LocalStorageRepository.OpenStoryById(id);
+    LastPageId = LastPage.LastPageId;
+  }
+
+  lastPageId();
   // const { Description, URLImage, Author }: IStory = StoriesRepositories.getStoryById(params);
   return (
     <View style={styles.container}>
@@ -24,7 +31,7 @@ export default function Details(props: any) {
       <Text style={styles.details__title}>{Author}</Text>
       <Text style={styles.details__text}>{Description}</Text>
       <TouchableOpacity
-        onPress={() => { navigator.navigation.push("Pages", { Description, URLImage, Author, Page, id }) }}
+        onPress={() => { navigator.navigation.push("Pages", { Description, URLImage, Author, Page, id, LastPageId }) }}
       >
         <Text style={styles.button__write}>Ler Agora</Text>
       </TouchableOpacity>
@@ -77,7 +84,6 @@ const styles = StyleSheet.create({
     paddingRight: 40,
     borderRadius: 15,
     fontSize: 16
-
   }
 
 });
