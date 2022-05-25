@@ -53,8 +53,6 @@ export class LocalStorageRepository {
   static ChangePageStoryId = async ({ LastPageId, StoryId }: IStorageStory): Promise<Boolean> => {
     try {
       const StoryPage = await AsyncStorage.getItem('@IStorageStory');
-      
-      console.log("StoryPage -> ", StoryPage); 
 
       if (!StoryPage) {
         this.OpenStoryById(StoryId);

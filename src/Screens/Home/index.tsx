@@ -101,6 +101,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center',
     color: '#eee',
-    fontSize: 16
+    fontSize: 14
   }
 });

@@ -45,19 +45,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#977BC5',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 60
+    paddingTop: 40
   },
 
   button__back: {
+    padding: 10,
+    borderWidth: 2,
+    borderColor: '#eee',
     position: 'relative',
-    left: -170,
+    left: -150,
     color: 'white',
+    borderRadius: 10,
     paddingLeft: 10,
     marginBottom: 40
   },
   details__image: {
     alignItems: 'center',
-    width: 360,
+    width: 380,
     height: 300,
     borderRadius: 15,
     marginBottom: 30
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     borderColor: '#530250',
     borderWidth: 2,
-    padding: 10,
+    padding: 15,
     paddingLeft: 40,
     paddingRight: 40,
     borderRadius: 15,
