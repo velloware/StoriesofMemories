@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#977BC5"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,11 +18,15 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.velloware.storiesofmemories",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.velloware.storiesofmemories",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },

@@ -1,9 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { StoriesRepositories, IStoryPage } from '../../Database/repositories/StoriesRepositories';
 import { LocalStorageRepository } from '../../Database/repositories/LocalStorageRepository';
 import { INavigator } from '../interfaces/Navigator';
+
+interface IswitchingPages {
+  event: 'next' | 'previous'
+}
 
 export default function Pages(props: any) {
   const { Description, URLImage, Author, Page, id, LastPageId } = props.route.params;
@@ -25,12 +28,12 @@ export default function Pages(props: any) {
     })()
   }, []);
 
-  async function switchingPages(pageEvent: any) {
+  function switchingPages({ event }: IswitchingPages) {
     let auxPage = page;
 
-    if (pageEvent.event === 'next') {
+    if (event === 'next') {
       auxPage = page + 1;
-    } else if (pageEvent.event === 'previous') {
+    } else if (event === 'previous') {
       auxPage = page - 1;
     }
 
