@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Alert, Image } from 'react-native';
 import { StoriesRepositories, IStory } from '../../Database/repositories/StoriesRepositories'
 import { useState, useEffect } from 'react';
@@ -6,9 +5,6 @@ import { INavigator } from '../interfaces/Navigator';
 
 export default function Home(props: any) {
   const navigator: INavigator = props;
-
-  // navigator.navigation.push("Details")
-  // Para mudar de Screen, utilize esta função abaixo, usando como base o index.tsx
   const [stories, setStories] = useState<IStory[]>([] as IStory[]);
 
   useEffect(() => {
