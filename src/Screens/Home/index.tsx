@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   button__image: {
-    width: 65,
-    height: 65,
+    width: 55,
+    height: 55,
     borderRadius: 15,
     marginRight: 10
   },
