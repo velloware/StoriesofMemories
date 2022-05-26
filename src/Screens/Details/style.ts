@@ -20,13 +20,13 @@ export function Styles(width: number, height: number) {
       color: 'white',
       borderRadius: 10,
       paddingLeft: 10,
-      marginBottom: 40,
-      marginTop: 10
+      marginBottom: 30,
+      marginTop: 5
     },
     details__image: {
       alignItems: 'center',
       width: 380,
-      height: 270,
+      height: 250,
       borderRadius: 15,
       marginBottom: 30
     },
@@ -38,21 +38,21 @@ export function Styles(width: number, height: number) {
     details__text: {
       padding: 25,
       color: '#eee',
-      fontSize: 16,
+      fontSize: 12,
       textAlign: 'justify',
-      marginBottom: 20,
-      height: 244
+      marginBottom: 2,
+      height: 190
     },
     button__write: {
       color: '#530250',
       fontWeight: 'bold',
       borderColor: '#530250',
       borderWidth: 2,
-      padding: 15,
+      padding: 10,
       paddingLeft: 40,
       paddingRight: 40,
       borderRadius: 15,
-      fontSize: 16
+      fontSize: 14
     },
   
   })
